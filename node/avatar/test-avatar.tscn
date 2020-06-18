@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://node/avatar/llenn/avatar_llenn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://node/avatar/test-avatar.gd" type="Script" id=2]
+[ext_resource path="res://node/weapon/fn_p90/weapon_fn_p90.tscn" type="PackedScene" id=3]
+[ext_resource path="res://node/vehicle/isuzu_elf/vehicle_isuzu_elf.tscn" type="PackedScene" id=4]
+[ext_resource path="res://node/util/camera/camera_player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://node/world/world_0/world_0.tscn" type="PackedScene" id=6]
+[ext_resource path="res://node/avatar/fukajiroh/avatar_fukajiroh.tscn" type="PackedScene" id=7]
+[ext_resource path="res://node/enemy/testbox_nnc/testbox_nnc.tscn" type="PackedScene" id=8]
+
+[node name="scene_test" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="camera_player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9595, 18.7685, 0 )
+
+[node name="vox_isuzu_elf_1" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6 )
+
+[node name="vox_isuzu_elf_2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8484, 0, 0 )
+
+[node name="llenn" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+
+[node name="fukajiroh" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8 )
+
+[node name="world_0" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -6.4, 0 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="llenn" type="Label" parent="Control"]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 48.0
+text = "LLENN"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="Label" parent="Control/llenn"]
+margin_left = -16.0
+margin_right = 16.0
+margin_bottom = 32.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="Label" parent="Control/llenn"]
+margin_left = 80.0
+margin_right = 240.0
+margin_bottom = 32.0
+
+[node name="fukajiroh" type="Label" parent="Control"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 64.0
+text = "Fukajiroh"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="active" type="Label" parent="Control/fukajiroh"]
+margin_left = -16.0
+margin_right = 16.0
+margin_bottom = 32.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="Label" parent="Control/fukajiroh"]
+margin_left = 80.0
+margin_right = 240.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 736.0
+margin_top = 496.0
+margin_right = 944.0
+margin_bottom = 512.0
+min_value = 128.0
+max_value = 1024.0
+step = 128.0
+page = 128.0
+value = 128.0
+scrollable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HSlider"]
+margin_left = -80.0
+margin_right = -16.0
+margin_bottom = 32.0
+text = "Enemies"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemies" type="Label" parent="HSlider"]
+margin_left = 96.0
+margin_top = -32.0
+margin_right = 144.0
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="max_enemies" type="Label" parent="HSlider"]
+margin_left = 160.0
+margin_top = -32.0
+margin_right = 200.0
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="testbox_nnc" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100 )
+
+[node name="fn_p90" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -266.435, 181.186, 137.762 )
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

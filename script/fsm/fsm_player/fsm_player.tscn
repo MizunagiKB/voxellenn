@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://script/fsm/fsm_player/fsm_palyer.gd" type="Script" id=1]
+[ext_resource path="res://script/fsm/fsm_player/state_idol.gd" type="Script" id=2]
+[ext_resource path="res://script/fsm/fsm_player/state_walk.gd" type="Script" id=3]
+[ext_resource path="res://script/fsm/fsm_player/state_run.gd" type="Script" id=4]
+[ext_resource path="res://script/fsm/fsm_player/state_action_fire.gd" type="Script" id=5]
+[ext_resource path="res://script/fsm/fsm_player/state_action_reload.gd" type="Script" id=6]
+[ext_resource path="res://script/fsm/fsm_player/state_interact.gd" type="Script" id=7]
+
+[node name="fsm_player" type="Node"]
+script = ExtResource( 1 )
+
+[node name="state_idol" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="state_walk" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="state_run" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="state_interact" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="state_action_fire" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="state_action_reload" type="Node" parent="."]
+script = ExtResource( 6 )

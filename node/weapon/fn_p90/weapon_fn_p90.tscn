@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://node/weapon/fn_p90/src/vox_fn_p90.glb" type="PackedScene" id=1]
+[ext_resource path="res://node/weapon/fn_p90/weapon_fn_p90.gd" type="Script" id=2]
+
+[node name="fn_p90" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="vox" parent="." instance=ExtResource( 1 )]
+
+[node name="chamber" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.2 )
+
+[node name="muzzle" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0, 0.2 )
+
+[node name="ejectionport" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.15 )
+
+[node name="audio_fire" type="AudioStreamPlayer3D" parent="."]
+unit_size = 2.0
+max_distance = 100.0
+
+[node name="status" type="Control" parent="."]
+margin_top = 464.0
+margin_right = 32.0
+margin_bottom = 512.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_ammo" type="Label" parent="status"]
+margin_left = 16.0
+margin_right = 96.0
+margin_bottom = 32.0
+text = "Ammo"
+align = 2
+
+[node name="ammo" type="Label" parent="status/lbl_ammo"]
+margin_left = 64.0
+margin_right = 112.0
+margin_bottom = 32.0
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_fire_mode" type="Label" parent="status"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 48.0
+text = "FireMode"
+align = 2
+
+[node name="fire_mode" type="Label" parent="status/lbl_fire_mode"]
+margin_left = 64.0
+margin_right = 112.0
+margin_bottom = 30.0
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
